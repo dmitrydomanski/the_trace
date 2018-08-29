@@ -1,0 +1,8 @@
+.Portrait {
+    height: 120px;
+    width: 120px;
+    border: solid 1px grey;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 12px;
+}
