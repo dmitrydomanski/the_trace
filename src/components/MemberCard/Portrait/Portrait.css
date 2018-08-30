@@ -1,8 +1,11 @@
 .Portrait {
-    height: 120px;
-    width: 120px;
-    border: solid 1px grey;
-    border-radius: 5px;
-    margin-top: 10px;
-    margin-left: 12px;
+    height: 220px;
+    width: inherit;
+    /* border: solid 1px grey; */
+    /* border-radius: 5px; */
+    /* margin-top: 10px; */
+    /* margin-left: 12px; */
+    background-image: url(../../../assets/1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
