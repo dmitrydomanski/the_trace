@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 // import MemberCard from '../../components/MemberCard/MemberCard';
-import NewMemberCard from '../../components/NewMemberCard/NewMemberCard';
+// import NewMemberCard from '../../components/NewMemberCard/NewMemberCard';
+import PersonCardMini from '../../components/PersonCardMini/PersonCardMini';
 import Aux from '../../hoc/Aux/Aux';
 
 class FamilyTree extends Component {
@@ -26,10 +27,8 @@ class FamilyTree extends Component {
             return { ...member, birthYear: +member.birthDate.split('').slice(-4).join('') }
         }).sort((a, b) => a.birthYear - b.birthYear);
 
-        // console.log(sortedMembers);
-
         let members = sortedMembers.map(member => {
-            return <NewMemberCard
+            return <PersonCardMini
                 url={member.id}
                 firstName={member.firstName}
                 lastName={member.lastName}
@@ -40,7 +39,11 @@ class FamilyTree extends Component {
         });
 
         return (
-            <Aux>{members}</Aux>
+            <Aux>
+                <div style={{display: 'flex', flexDirection: 'row'}}>
+                    {members}
+                </div>
+            </Aux>
         )
     }
 }
