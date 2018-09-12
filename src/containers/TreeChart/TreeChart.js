@@ -1,35 +1,14 @@
 import React, { Component } from 'react';
 import Tree from 'react-d3-tree';
 
-import data from './data';
-import NodeLabel from '../components/NodeLabel';
+import data from '../../data';
+import NodeLabel from '../../components/NodeLabel';
 
-class FamilyTree extends Component {
+class TreeChart extends Component {
 
     state = {
         nodes: null,
         persons: data
-    }
-
-    omitKey = (object, omitKey) => {
-        return Object.keys(object).reduce((result, key) => {
-            if (key !== omitKey) {
-                result[key] = object[key];
-            }
-            // console.log(result);
-            return result;
-        }, {});
-    }
-
-    stratifyTree = (array) => {
-        // const treeData = this.state.persons;
-        return array.map(el => {
-            return {
-                id: el.id,
-                attrs: this.omitKey(el, 'id'),
-                children: array.filter(person => person.parentId === el.id)
-            }
-        });
     }
 
     createDataTree = (dataSet) => {
@@ -53,12 +32,11 @@ class FamilyTree extends Component {
     }
 
     componentDidMount() {
-        console.log(this.createDataTree(this.state.persons));
-        // console.log(this.state.persons);
+       
     }
 
     render() {
-        const treeData = this.createDataTree(this.state.persons);
+        const treeData = this.createDataTree(this.sortByBirthDate(this.state.persons));
         return (
             <div id="treeWrapper" style={{ width: '1500px', height: '1500px' }}>
                 <Tree
@@ -72,7 +50,7 @@ class FamilyTree extends Component {
                     nodeLabelComponent={{
                         render: <NodeLabel className='myLabelComponentInSvg' />,
                         // foreignObjectWrapper: {
-                        //     y: 96
+                        //     y: 24
                         // }
                     }} />
 
@@ -82,4 +60,4 @@ class FamilyTree extends Component {
 
 }
 
-export default FamilyTree;
+export default TreeChart;
