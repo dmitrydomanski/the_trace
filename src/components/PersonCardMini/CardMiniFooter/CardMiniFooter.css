@@ -1,0 +1,19 @@
+.CardMiniFooter {
+    text-align: center;
+    background-color: orangered;
+    color: black;
+    width: 100%;
+    padding: 10px 0 0 0;
+    height: auto;
+    min-height: 90px;
+}
+
+.Name {
+   font-size:larger;
+}
+
+.TextArea {
+   padding:0 0px 10px 0px;
+   font-size: smaller;
+    
+}

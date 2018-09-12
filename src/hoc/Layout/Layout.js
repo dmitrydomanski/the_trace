@@ -1,6 +1,7 @@
 import React from 'react';
 
-import FamilyTree from '../../containers/FamilyTree/FamilyTree';
+// import FamilyTree from '../../containers/FamilyTree/FamilyTree';
+import FamilyTree from '../../containers/Chart';
 import classes from './Layout.css';
 
 // import Aux from '../Aux/Aux';
