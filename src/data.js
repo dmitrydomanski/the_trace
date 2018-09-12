@@ -2,6 +2,7 @@
 const data = [
     {
         id: 1, firstName: 'Dmitry', lastName: 'Domanski',
+        // id: 1, imageId: 1, firstName: 'Dmitry', lastName: 'Domanski',
         gender: 'male', maidenName: null, matrimonialStatus: 'm',
         birthDate: '06/10/1982', deathDate: null, parentId: 8
     },

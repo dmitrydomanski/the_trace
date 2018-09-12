@@ -7,8 +7,8 @@ class NodeLabel extends PureComponent {
       return (
         <div className={className}>
           <PersonCardMini
-                // url={`../../../assets/${nodeData.id}.jpg`}
-                // url={'../../../assets/1.jpg'}
+                // url={`../../../assets/${nodeData.imageUrl}.jpg`}
+                url={nodeData.imageUrl}
                 firstName={nodeData.firstName}
                 lastName={nodeData.lastName}
                 birthDate={nodeData.birthDate}

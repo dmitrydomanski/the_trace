@@ -1,19 +1,16 @@
 import React from 'react';
 
 import classes from './PersonPortrait.css';
+// import * as images from '../../../assets'
 
 const personPortrait = (props) => {
-    // const imageUrl = require(`../../../assets/${props.url}.jpg`);
-    // console.log(imageUrl);
-    // const image = (<img src={imageUrl ? imageUrl : "../../../assets/mock.jpg"}  alt='a person pic'/>);
-    // console.log(image);
-    
-    // const image = (<img src={imageUrl ? imageUrl : "../../../assets/mock.jpg"}  alt='a person pic'/>);
+    const imageUrl = require(`../../../assets/${props.url}.jpg`);
+    const image = (<img src={imageUrl}  alt='a person pic'/>)
+    console.log(image);
     
     return (
         <div className={classes.PersonPortrait}
-            // style={{ backgroundImage: `url(${props.url})` }}
-            >{props.children}</div>
+            style={{ backgroundImage: `url(${imageUrl})` }}>{props.children}</div>
     )
 }
 

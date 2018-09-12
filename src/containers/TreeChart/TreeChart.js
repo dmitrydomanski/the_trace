@@ -27,7 +27,7 @@ class TreeChart extends Component {
 
     sortByBirthDate = (array) => {
        return array.map(member => {
-            return { ...member, birthYear: +member.birthDate.split('').slice(-4).join('') }
+            return { ...member, imageUrl: member.id, birthYear: +member.birthDate.split('').slice(-4).join('') }
         }).sort((a, b) => a.birthYear - b.birthYear);
     }
 
@@ -41,7 +41,7 @@ class TreeChart extends Component {
             <div id="treeWrapper" style={{ width: '1500px', height: '1500px' }}>
                 <Tree
                     data={treeData}
-                    nodeSize={{x:400, y: 400}}
+                    nodeSize={{x:300, y: 400}}
                     orientation={'vertical'}
                     allowForeignObjects
                     collapsible={false}
