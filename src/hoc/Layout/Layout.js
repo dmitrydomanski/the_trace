@@ -1,15 +1,45 @@
-import React from 'react';
-
-import TreeChart from '../../containers/TreeChart/TreeChart';
+import React, { Component } from 'react';
+import { Route, Switch, withRouter } from 'react-router-dom';
+import TreeChart from '../../components/TreeChart/TreeChart';
+import HomePage from '../../components/HomePage/HomePage'
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import classes from './Layout.css';
 
-const layout = (props) => {
-    return (
-        <div className={classes.Layout}>
-            <h3>Menu, Toolbar, Navigation</h3>
-            <TreeChart />
-        </div>
-    )
+class Layout extends Component {
+
+    state = {
+        color: 'red'
+    }
+
+    color;
+
+    getColor = (color) => {
+        this.color = color;
+        // this.setState({ color: this.color })
+    }
+
+    componentDidMount() {
+        console.log(this.props)
+    }
+
+    componentWillMount() {
+    }
+
+    render() {
+        return (
+            <div className={classes.Layout}>
+                <Toolbar color={this.props.location.pathname === '/' ? 'transparent' : 'dimgray'}
+                showLogo={this.props.location.pathname === '/' ? 'none' : 'flex'} />
+                <Switch>
+                    <Route exact path='/' component={HomePage} />
+                    <Route path='/treechart' render={props => (
+                        <TreeChart />
+                    )} />
+                </Switch>
+            </div>
+        )
+
+    }
 }
 
-export default layout;
+export default withRouter(Layout);
