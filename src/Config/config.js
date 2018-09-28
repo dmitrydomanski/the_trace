@@ -1,6 +1,6 @@
 
 
-  export const config = {
+  export const DB_CONFIG = {
     apiKey: "AIzaSyA7abrFpilzoN_a6fXauNZNP5v_gjli3Gs",
     authDomain: "thetracedb.firebaseapp.com",
     databaseURL: "https://thetracedb.firebaseio.com",
