@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import Tree from 'react-d3-tree';
 // import { withRouter } from 'react-router-dom';
-import { DB_CONFIG } from '../../Config/config';
+import firebase from '../../Config/config';
+import 'firebase/database';
 import data from '../../data';
 import NodeLabel from '../NodeLabel/NodeLabel';
-import firebase from 'firebase'
 
 class TreeChart extends Component {
 
     constructor(props) {
-        console.log(firebase);
         super(props);
-        if (!firebase.apps.length) {
-            this.app = firebase.initializeApp(DB_CONFIG);
-        }
-        this.db = firebase.database().ref().child('persons');
+        this.database = firebase.database().ref().child('persons');
+
         this.state = {
             nodes: null,
             persons: data
@@ -45,7 +42,7 @@ class TreeChart extends Component {
     componentDidMount() {
         const prevPersons = this.state.persons;
 
-        this.db.on('child_added', snap => {
+        this.database.on('child_added', snap => {
             prevPersons.push({
                 id: snap.key,
                 firstName: snap.val().firstName,
@@ -59,10 +56,23 @@ class TreeChart extends Component {
         })
     }
 
+    addPerson = () => {
+        this.database.push().set({
+            firstName: 'Dmitry',
+            lastName: 'Domanski',
+            gender: 'male',
+            birthDate: '06/10/1982',
+            deathDate:  null,
+            parentId: null
+        })
+    }
+
     render() {
         const treeData = this.createDataTree(this.sortByBirthDate(this.state.persons));
         return (
             <div id="treeWrapper" style={{ width: '1500px', height: '1500px' }}>
+                <button style={{ top: '200px', left: '100px', zIndex: 100, position: 'absolute' }}
+                    onClick={this.addPerson}>Firebase Test</button>
                 <Tree
                     data={treeData}
                     nodeSize={{ x: 300, y: 400 }}

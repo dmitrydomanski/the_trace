@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PersonCardMini from '../PersonCardMini/PersonCardMini';
+import CardFooterOverlay from '../UIElements/CardFooterOverlay/CardFooterOverlay';
 
 class NodeLabel extends PureComponent {
     render() {
@@ -17,6 +18,8 @@ class NodeLabel extends PureComponent {
           {/* {nodeData._children && 
             <button>{nodeData._collapsed ? 'Expand' : 'Collapse'}</button>
           } */}
+        <CardFooterOverlay />
+          
         </div>
       )
     }

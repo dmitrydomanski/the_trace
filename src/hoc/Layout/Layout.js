@@ -7,29 +7,11 @@ import classes from './Layout.css';
 
 class Layout extends Component {
 
-    state = {
-        color: 'red'
-    }
-
-    color;
-
-    getColor = (color) => {
-        this.color = color;
-        // this.setState({ color: this.color })
-    }
-
-    componentDidMount() {
-        console.log(this.props)
-    }
-
-    componentWillMount() {
-    }
-
     render() {
         return (
             <div className={classes.Layout}>
                 <Toolbar color={this.props.location.pathname === '/' ? 'transparent' : 'dimgray'}
-                showLogo={this.props.location.pathname === '/' ? 'none' : 'flex'} />
+                    showLogo={this.props.location.pathname === '/' ? 'none' : 'flex'} />
                 <Switch>
                     <Route exact path='/' component={HomePage} />
                     <Route path='/treechart' render={props => (
