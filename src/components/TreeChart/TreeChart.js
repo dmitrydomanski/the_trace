@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Tree from 'react-d3-tree';
-// import { withRouter } from 'react-router-dom';
 import firebase from '../../Config/config';
 import 'firebase/database';
 import data from '../../data';
+import Modal from '../UI/Modal/Modal';
 import NodeLabel from '../NodeLabel/NodeLabel';
 
 class TreeChart extends Component {
@@ -14,7 +14,8 @@ class TreeChart extends Component {
 
         this.state = {
             nodes: null,
-            persons: data
+            persons: data,
+            addingPerson: true
         }
     }
 
@@ -56,13 +57,17 @@ class TreeChart extends Component {
         })
     }
 
+    addPersonCancelHandler = () => {
+        this.setState({ addingPerson: false })
+    }
+
     addPerson = () => {
         this.database.push().set({
             firstName: 'Dmitry',
             lastName: 'Domanski',
             gender: 'male',
             birthDate: '06/10/1982',
-            deathDate:  null,
+            deathDate: null,
             parentId: null
         })
     }
@@ -71,8 +76,11 @@ class TreeChart extends Component {
         const treeData = this.createDataTree(this.sortByBirthDate(this.state.persons));
         return (
             <div id="treeWrapper" style={{ width: '1500px', height: '1500px' }}>
-                <button style={{ top: '200px', left: '100px', zIndex: 100, position: 'absolute' }}
-                    onClick={this.addPerson}>Firebase Test</button>
+                <Modal show={this.state.addingPerson} modalClosed={this.addPersonCancelHandler}>
+                    <div>Adding person...</div>
+                </Modal>
+                {/* <button style={{ top: '200px', left: '100px', zIndex: 100, position: 'absolute' }}
+                    onClick={this.addPerson}>Firebase Test</button> */}
                 <Tree
                     data={treeData}
                     nodeSize={{ x: 300, y: 400 }}
@@ -94,5 +102,4 @@ class TreeChart extends Component {
 
 }
 
-// export default withRouter(TreeChart);
 export default TreeChart;
