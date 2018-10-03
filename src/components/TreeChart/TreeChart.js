@@ -15,7 +15,7 @@ class TreeChart extends Component {
         this.state = {
             nodes: null,
             persons: data,
-            addingPerson: true
+            addingPerson: false
         }
     }
 

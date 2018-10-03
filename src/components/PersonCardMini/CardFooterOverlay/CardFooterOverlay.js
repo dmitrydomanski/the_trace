@@ -10,9 +10,9 @@ export default class CardFooterOverlay extends Component {
 
             <div className={classes.CardFooterOverlay}>
                 {!this.props.parent?
-                    <div className={classes.OverlayLink}>Add parent</div> : null
+                    <div className={classes.OverlayLink}>add parent</div> : null
                 }
-                <div className={classes.OverlayLink}>Add child</div>
+                <div className={classes.OverlayLink}>add child</div>
             </div>
         )
 

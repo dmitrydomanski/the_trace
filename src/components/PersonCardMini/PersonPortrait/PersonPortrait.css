@@ -1,7 +1,6 @@
 .PersonPortrait {
     height: 270px;
     width: inherit;
-    /* background-image: url(../../../assets/12.jpg); */
     background-size: cover;
     background-repeat: no-repeat;
 }
