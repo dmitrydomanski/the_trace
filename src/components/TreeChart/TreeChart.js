@@ -4,6 +4,7 @@ import firebase from '../../Config/config';
 import 'firebase/database';
 import data from '../../data';
 import Modal from '../UI/Modal/Modal';
+import AddPersonForm from '../AddPerson/AddPersonForm'
 import NodeLabel from '../NodeLabel/NodeLabel';
 
 class TreeChart extends Component {
@@ -15,7 +16,7 @@ class TreeChart extends Component {
         this.state = {
             nodes: null,
             persons: data,
-            addingPerson: false
+            addingPerson: true
         }
     }
 
@@ -77,7 +78,7 @@ class TreeChart extends Component {
         return (
             <div id="treeWrapper" style={{ width: '1500px', height: '1500px' }}>
                 <Modal show={this.state.addingPerson} modalClosed={this.addPersonCancelHandler}>
-                    <div>Adding person...</div>
+                    <AddPersonForm />
                 </Modal>
                 {/* <button style={{ top: '200px', left: '100px', zIndex: 100, position: 'absolute' }}
                     onClick={this.addPerson}>Firebase Test</button> */}
