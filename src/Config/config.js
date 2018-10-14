@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 
   const DB_CONFIG = {
-    apiKey: "AIzaSyA7abrFpilzoN_a6fXauNZNP5v_gjli3Gs",
+    apiKey: "",
     authDomain: "thetracedb.firebaseapp.com",
     databaseURL: "https://thetracedb.firebaseio.com",
     projectId: "thetracedb",
