@@ -1,10 +1,10 @@
 import React from 'react';
 
 import classes from './PersonCardMini.css';
-import PersonPortrait from '../PersonCardMini/PersonPortrait/PersonPortrait';
-import CardMiniFooter from '../../components/PersonCardMini/CardMiniFooter/CardMiniFooter'
+import PersonPortrait from './PersonPortrait/PersonPortrait';
+import CardMiniFooter from './CardMiniFooter/CardMiniFooter'
 
-const personCardMini = (props) => (
+const personCardMini = props => (
     <div className={classes.PersonCardMini}>
         <PersonPortrait url={props.url} />
 

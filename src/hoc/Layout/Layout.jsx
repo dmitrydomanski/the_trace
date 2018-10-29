@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import TreeChart from '../../components/TreeChart/TreeChart';
-import HomePage from '../../components/HomePage/HomePage'
+import HomePage from '../../components/HomePage/HomePage';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import classes from './Layout.css';
 
@@ -14,12 +14,12 @@ class Layout extends Component {
                     showLogo={this.props.location.pathname === '/' ? 'none' : 'flex'} />
                 <Switch>
                     <Route exact path='/' component={HomePage} />
-                    <Route path='/treechart' render={props => (
+                    <Route path='/treechart' render={(
                         <TreeChart />
                     )} />
                 </Switch>
             </div>
-        )
+        );
 
     }
 }

@@ -1,14 +1,10 @@
-import React from 'react';
+// import React from 'react';
 
 import './App.css';
 import Layout from './hoc/Layout/Layout';
 
-class App extends React.Component {
-    render() {
-        return (
-            <Layout />
-        );
-    }
-}
+const app = () => ( <
+    Layout / >
+)
 
-export default App;
+export default app;
