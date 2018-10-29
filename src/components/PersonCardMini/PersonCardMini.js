@@ -1,23 +1,22 @@
 import React from 'react';
 
 import classes from './PersonCardMini.css';
-// import CardTitle from '../MemberCard/CardTitle/CardTitle';
 import PersonPortrait from '../PersonCardMini/PersonPortrait/PersonPortrait';
-import CardMiniFooter from '../../components/PersonCardMini/CardMiniFooter/CardMiniFooter';
-// import Portrait from '../MemberCard/Portrait/Portrait';
-// import TextArea from '../MemberCard/TextArea/TextArea';
+import CardMiniFooter from '../../components/PersonCardMini/CardMiniFooter/CardMiniFooter'
 
 const personCardMini = (props) => (
     <div className={classes.PersonCardMini}>
-        <PersonPortrait url={props.url}/>
-        
+        <PersonPortrait url={props.url} />
+
         <CardMiniFooter
+            parent={props.parent}
             firstName={props.firstName}
             lastName={props.lastName}
             birthDate={props.birthDate}
             deathDate={props.deathDate}
             maidenName={props.maidenName} />
-       
+
+
     </div>
 );
 

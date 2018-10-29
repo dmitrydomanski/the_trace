@@ -1,17 +1,27 @@
-import React from 'react';
-
-import FamilyTree from '../../containers/FamilyTree/FamilyTree';
+import React, { Component } from 'react';
+import { Route, Switch, withRouter } from 'react-router-dom';
+import TreeChart from '../../components/TreeChart/TreeChart';
+import HomePage from '../../components/HomePage/HomePage'
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import classes from './Layout.css';
 
-// import Aux from '../Aux/Aux';
+class Layout extends Component {
 
-const layout = (props) => {
-    return (
-        <div className={classes.Layout}>
-            <h3>Menu, Toolbar, Navigation</h3>
-            <FamilyTree />
-        </div>
-    );
-};
+    render() {
+        return (
+            <div className={classes.Layout}>
+                <Toolbar color={this.props.location.pathname === '/' ? 'transparent' : 'dimgray'}
+                    showLogo={this.props.location.pathname === '/' ? 'none' : 'flex'} />
+                <Switch>
+                    <Route exact path='/' component={HomePage} />
+                    <Route path='/treechart' render={props => (
+                        <TreeChart />
+                    )} />
+                </Switch>
+            </div>
+        )
 
-export default layout;
+    }
+}
+
+export default withRouter(Layout);
