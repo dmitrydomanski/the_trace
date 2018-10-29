@@ -11,7 +11,7 @@ const layout = (props) => {
             <h3>Menu, Toolbar, Navigation</h3>
             <FamilyTree />
         </div>
-    )
-}
+    );
+};
 
 export default layout;

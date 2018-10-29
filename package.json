@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "acorn": "^6.0.2",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
-    "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.2",
     "babel-preset-react-app": "^3.1.2",
@@ -43,7 +43,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "pretest": "eslint --ignore-path .gitignore .",
+    "pretest": "eslint --ignore-path .eslintignore .",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
@@ -89,6 +89,7 @@
     "extends": "airbnb"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "eslint": "^5.8.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",

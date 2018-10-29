@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './App.css';
 import Layout from './hoc/Layout/Layout';
 
-class App extends Component {
-  render() {
-    return (
-      <Layout />
-    );
-  }
+class App extends React.Component {
+    render() {
+        return (
+            <Layout />
+        );
+    }
 }
 
 export default App;

@@ -18,6 +18,6 @@ const newMemberCard = (props) => (
             birthDate={props.birthDate}
             deathDate={props.deathDate} /> */}
     </div>
-)
+);
 
 export default newMemberCard;

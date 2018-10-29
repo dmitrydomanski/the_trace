@@ -1,7 +1,7 @@
-import React from 'react';
+// import React from 'react';
 
-import classes from './CardMiniFooter.css'
-import Aux from '../../../hoc/Aux/Aux';
+import classes from './CardMiniFooter.css';
+// import Aux from '../../../hoc/Aux/Aux';
 
 const cardMiniFooter = (props) => (
 
@@ -21,6 +21,6 @@ const cardMiniFooter = (props) => (
                 : (<div>born {props.birthDate}</div>)}
         </div>
     </Aux>
-)
+);
 
 export default cardMiniFooter;

@@ -24,7 +24,7 @@ class FamilyTree extends Component {
     render() {
 
         const sortedMembers = this.state.members.map(member => {
-            return { ...member, birthYear: +member.birthDate.split('').slice(-4).join('') }
+            return { ...member, birthYear: +member.birthDate.split('').slice(-4).join('') };
         }).sort((a, b) => a.birthYear - b.birthYear);
 
         let members = sortedMembers.map(member => {
@@ -35,7 +35,7 @@ class FamilyTree extends Component {
                 birthDate={member.birthDate}
                 deathDate={member.deathDate}
                 maidenName={member.maidenName}
-                key={member.id} />
+                key={member.id} />;
         });
 
         return (
@@ -44,7 +44,7 @@ class FamilyTree extends Component {
                     {members}
                 </div>
             </Aux>
-        )
+        );
     }
 }
 

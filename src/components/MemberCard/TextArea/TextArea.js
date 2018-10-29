@@ -15,7 +15,7 @@ const textArea = (props) => {
                 : (<div>born {props.birthDate}</div>)}
 
         </div>
-    )
-}
+    );
+};
 
 export default textArea;

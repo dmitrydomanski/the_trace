@@ -1,6 +1,6 @@
 import React from 'react';
 
-import classes from './CardTitle.css'
+import classes from './CardTitle.css';
 // import TextArea from '../TextArea/TextArea';
 import Aux from '../../../hoc/Aux/Aux';
 
@@ -22,6 +22,6 @@ const cardTitle = (props) => (
                 : (<div>born {props.birthDate}</div>)}
         </div>
     </Aux>
-)
+);
 
 export default cardTitle;

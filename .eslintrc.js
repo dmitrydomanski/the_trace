@@ -10,7 +10,9 @@ module.exports = {
             "jsx": true
         },
         "ecmaVersion": 2018,
-        "sourceType": "module"
+        "sourceType": "module",
+        "allowImportExportEverywhere": false,
+        "codeFrame": true
     },
     "plugins": [
         "react"
@@ -32,5 +34,6 @@ module.exports = {
             "error",
             "always"
         ]
-    }
+    },
+    "parser": "babel-eslint"
 };
