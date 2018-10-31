@@ -30,7 +30,6 @@ class Toolbar extends Component {
 Toolbar.propTypes = {
     color: PropTypes.string.isRequired,
     showLogo: PropTypes.string.isRequired,
-    // history: PropTypes.string.isRequired,
 };
 
 export default withRouter(Toolbar);

@@ -11,6 +11,9 @@ const cardFooterOverlay = ({ parent }) => (
     </div>
 );
 cardFooterOverlay.propTypes = {
-    parent: PropTypes.string.isRequired,
+    parent: PropTypes.number,
+};
+cardFooterOverlay.defaultProps = {
+    parent: null,
 };
 export default cardFooterOverlay;

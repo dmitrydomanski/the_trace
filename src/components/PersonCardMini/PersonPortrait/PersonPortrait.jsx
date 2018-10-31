@@ -17,8 +17,12 @@ const personPortrait = ({ url, children }) => {
 };
 
 personPortrait.propTypes = {
-    url: PropTypes.string.isRequired,
-    children: PropTypes.node.isRequired,
+    url: PropTypes.number.isRequired,
+    children: PropTypes.node,
+};
+
+personPortrait.defaultProps = {
+    children: null,
 };
 
 export default personPortrait;

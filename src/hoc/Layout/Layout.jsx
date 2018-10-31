@@ -6,6 +6,8 @@ import HomePage from '../../components/HomePage/HomePage';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import classes from './Layout.css';
 
+// const handleClick = () => alert('click');
+
 const layout = ({ location }) => (
     <div className={classes.Layout}>
         <Toolbar
@@ -20,9 +22,7 @@ const layout = ({ location }) => (
             />
             <Route
                 path="/treechart"
-                render={(
-                    <TreeChart />
-                )}
+                component={TreeChart}
             />
         </Switch>
     </div>

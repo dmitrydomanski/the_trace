@@ -58,14 +58,17 @@ export default class CardMiniFooter extends Component {
 }
 
 CardMiniFooter.propTypes = {
-    parent: PropTypes.string.isRequired,
+    // parent: PropTypes.oneOfType([null, PropTypes.number]).isRequired,
+    parent: PropTypes.number,
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
     maidenName: PropTypes.string,
     birthDate: PropTypes.string.isRequired,
-    deathDate: PropTypes.string.isRequired,
+    deathDate: PropTypes.string,
 };
 
 CardMiniFooter.defaultProps = {
     maidenName: '',
+    deathDate: null,
+    parent: null,
 };

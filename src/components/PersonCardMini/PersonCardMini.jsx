@@ -23,17 +23,19 @@ const personCardMini = ({ url, parent, firstName, lastName, birthDate, deathDate
 );
 
 personCardMini.propTypes = {
-    url: PropTypes.string.isRequired,
-    parent: PropTypes.string.isRequired,
+    url: PropTypes.number.isRequired,
+    parent: PropTypes.number,
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
     maidenName: PropTypes.string,
     birthDate: PropTypes.string.isRequired,
-    deathDate: PropTypes.string.isRequired,
+    deathDate: PropTypes.string,
 };
 
 personCardMini.defaultProps = {
     maidenName: '',
+    deathDate: null,
+    parent: null,
 };
 
 export default personCardMini;

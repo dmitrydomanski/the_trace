@@ -5,18 +5,24 @@ import classes from './NavItem.css';
 
 const navItem = ({ active, link, children }) => (
     <span className={classes.NavItem}>
-        <a
+        <div
             href={link}
             className={active ? classes.active : null}
         >{children}
-        </a>
+        </div>
     </span>
 );
 
 navItem.propTypes = {
-    active: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-    children: PropTypes.node.isRequired,
+    active: PropTypes.string,
+    link: PropTypes.string,
+    children: PropTypes.node,
+};
+
+navItem.defaultProps = {
+    active: '',
+    link: '',
+    children: null,
 };
 
 export default navItem;
