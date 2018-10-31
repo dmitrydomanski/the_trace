@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './CardMiniFooter.css';
 import CardFooterOverlay from '../CardFooterOverlay/CardFooterOverlay';
-import PropTypes from 'prop-types';
-
-
 
 export default class CardMiniFooter extends Component {
     state = {
@@ -66,4 +64,8 @@ CardMiniFooter.propTypes = {
     maidenName: PropTypes.string,
     birthDate: PropTypes.string.isRequired,
     deathDate: PropTypes.string.isRequired,
-}
+};
+
+CardMiniFooter.defaultProps = {
+    maidenName: '',
+};

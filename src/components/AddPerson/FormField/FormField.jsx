@@ -2,19 +2,19 @@ import React from 'react';
 // import classes from './FormField.css';
 import PropTypes from 'prop-types';
 
-const formField = props => (
+const formField = ({ label, name, type, inputChanged }) => (
     <React.Fragment>
-        <label> {props.label}
-            <input name={props.name} type={props.type} onChange={props.inputChanged} />
+        <label htmlFor={name}> {label}
+            <input name={name} type={type} onChange={inputChanged} />
         </label>
     </React.Fragment>
 );
 
 formField.propTypes = {
-    label: PropTypes.label.isRequired,
+    label: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    inputChanged: PropTypes.func,
-}
+    inputChanged: PropTypes.func.isRequired,
+};
 
 export default formField;

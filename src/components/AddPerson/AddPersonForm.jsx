@@ -5,14 +5,18 @@ import FormField from './FormField/FormField';
 export default class AddPersonForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+
+        };
     }
 
     formChangeHandler = (event) => {
         const { target } = event;
         const { name } = target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        this.setState({ [name]: value });
+        this.setState({
+            [name]: value,
+        });
     }
 
     formSubmitHandler = () => {

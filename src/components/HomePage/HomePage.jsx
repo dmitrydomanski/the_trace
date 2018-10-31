@@ -1,13 +1,10 @@
-// import React from 'react'
+import React from 'react';
 import classes from './Homepage.css';
 
-
-const homePage = () => {
-    return (
-        <div className={classes.Layout}>
-            <main></main>
-        </div>
-    );
-};
+const homePage = () => (
+    <div className={classes.Layout}>
+        <main />
+    </div>
+);
 
 export default homePage;

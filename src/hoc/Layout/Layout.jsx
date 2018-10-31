@@ -1,27 +1,43 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import TreeChart from '../../components/TreeChart/TreeChart';
 import HomePage from '../../components/HomePage/HomePage';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import classes from './Layout.css';
 
-class Layout extends Component {
+const layout = ({ location }) => (
+    <div className={classes.Layout}>
+        <Toolbar
+            color={location.pathname === '/' ? 'transparent' : 'dimgray'}
+            showLogo={location.pathname === '/' ? 'none' : 'flex'}
+        />
+        <Switch>
+            <Route
+                exact
+                path="/"
+                component={HomePage}
+            />
+            <Route
+                path="/treechart"
+                render={(
+                    <TreeChart />
+                )}
+            />
+        </Switch>
+    </div>
+);
 
-    render() {
-        return (
-            <div className={classes.Layout}>
-                <Toolbar color={this.props.location.pathname === '/' ? 'transparent' : 'dimgray'}
-                    showLogo={this.props.location.pathname === '/' ? 'none' : 'flex'} />
-                <Switch>
-                    <Route exact path='/' component={HomePage} />
-                    <Route path='/treechart' render={(
-                        <TreeChart />
-                    )} />
-                </Switch>
-            </div>
-        );
+layout.propTypes = {
+    location: PropTypes.shape({
+        pathname: PropTypes.string.isRequired,
+    }),
+};
 
-    }
-}
+layout.defaultProps = {
+    location: {
+        pathname: '',
+    },
+};
 
-export default withRouter(Layout);
+export default withRouter(layout);

@@ -32,11 +32,18 @@ module.exports = {
                 'JSXSpreadChild'
             ]
         }],
+        "jsx-a11y/label-has-for": [2, {
+            "components": ["Label"],
+            "required": {
+                "every": ["nesting", "id"]
+            },
+            "allowChildren": false
+        }],
         "react/jsx-indent": ['error', 4],
         "react/jsx-one-expression-per-line": 0,
         "object-curly-newline": ["error", {
             "ObjectExpression": "always",
-            "ObjectPattern": {"multiline": true}
+            "ObjectPattern": { "multiline": true }
         }],
         "react/jsx-indent-props": ['error', 4],
         "linebreak-style": [
@@ -54,7 +61,7 @@ module.exports = {
         "react/jsx-filename-extension": [1, {
             "extensions": [".js", ".jsx"]
         }],
-        
+
 
     },
     "parser": "babel-eslint"
