@@ -1,10 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import classes from './DicslaimerPage.css';
 
-const disclaimerPage = () => (
+const disclaimerPage = ({ location }) => (
     <div className={classes.Layout}>
-        <div className={classes.Disclaimer}>the page is under construction</div>
+        <div className={classes.Disclaimer}>{location.pathname} page is under construction</div>
     </div>
 );
 
-export default disclaimerPage;
+disclaimerPage.propTypes = {
+    location: PropTypes.shape({
+        pathname: PropTypes.string.isRequired,
+    }),
+};
+
+disclaimerPage.defaultProps = {
+    location: {
+        pathname: '',
+    },
+};
+
+export default withRouter(disclaimerPage);

@@ -2,28 +2,28 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import PersonCardMini from '../PersonCardMini/PersonCardMini';
-import Person from '../../models/Person';
+// import Person from '../../models/Person';
 
 class NodeLabel extends PureComponent {
     render() {
         const { className, nodeData } = this.props;
-        let person = new Person();
-        person = {
-            ...nodeData,
-        };
+        // let person = new Person();
+        // person = {
+        //     ...nodeData,
+        // };
         // const person = Object.create(Person, nodeData);
-        // console.log(person);
+        // console.log(nodeData.imageUrl);
         return (
             <div className={className}>
                 <PersonCardMini
-                    url={person.imageUrl}
-                    parent={person.parentId}
-                    firstName={person.firstName}
-                    lastName={person.lastName}
-                    birthDate={person.birthDate}
-                    deathDate={person.deathDate}
-                    maidenName={person.maidenName}
-                    key={person.id}
+                    url={nodeData.imageUrl}
+                    parent={nodeData.parentId}
+                    firstName={nodeData.firstName}
+                    lastName={nodeData.lastName}
+                    birthDate={nodeData.birthDate}
+                    deathDate={nodeData.deathDate}
+                    maidenName={nodeData.maidenName}
+                    key={nodeData.id}
                 />
             </div>
         );
@@ -34,7 +34,7 @@ NodeLabel.propTypes = {
     className: PropTypes.string.isRequired,
     nodeData: PropTypes.shape({
         url: PropTypes.number,
-        parent: PropTypes.instanceOf(Person),
+        parent: PropTypes.object,
         firstName: PropTypes.string.isRequired,
         lastName: PropTypes.string.isRequired,
         maidenName: PropTypes.string,

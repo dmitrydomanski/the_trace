@@ -20,20 +20,36 @@ class TreeChart extends Component {
     }
 
     componentDidMount() {
-        const { persons } = this.state;
+        let { persons } = this.state;
+        // console.log(persons.length);
+        // (this.database.on('child_added', (snap) => {
+        //     persons.push({
+        //         id: snap.key,
+        //         firstName: snap.val().firstName,
+        //         lastName: snap.val().lastName,
+        //         gender: snap.val().gender,
+        //         birthDate: snap.val().birthDate,
+        //         deathDate: snap.val().deathDate,
+        //         parentId: snap.val().parentId,
+        //     });
+        //     console.log(persons.length);
 
-        (this.database.on('child_added', (snap) => {
-            persons.push({
-                id: snap.key,
-                firstName: snap.val().firstName,
-                lastName: snap.val().lastName,
-                gender: snap.val().gender,
-                birthDate: snap.val().birthDate,
-                deathDate: snap.val().deathDate,
-                parentId: snap.val().parentId,
-
+        Promise.all(persons.map((person) => {
+            const num = person.id;
+            if (typeof num !== 'number') {
+                return null;
+            }
+            // console.log('it ok');
+            return import(`../../assets/${person.id}.jpg`);
+        }))
+            .then((personsImages) => {
+                persons = persons.map((person, index) => ({
+                    ...person,
+                    imageUrl: personsImages[index],
+                }));
+                // console.log(persons);
             });
-        }));
+        // }));
     }
 
     createDataTree = (dataSet) => {
@@ -57,7 +73,7 @@ class TreeChart extends Component {
     sortByBirthDate = array => array.map(person => (
         {
             ...person,
-            imageUrl: person.id,
+            // imageUrl: imgPath,
             name: person.id.toString(),
             birthYear: +person.birthDate.split('').slice(-4).join(''),
         })).sort((a, b) => a.birthYear - b.birthYear);
@@ -96,20 +112,20 @@ class TreeChart extends Component {
                 <Tree
                     data={treeData}
                     nodeSize={{
-                        x: 300, y: 400,
+                        x: 330, y: 450,
                     }}
                     orientation="vertical"
                     allowForeignObjects
                     collapsible={false}
                     translate={{
-                        x: 600, y: 200,
+                        x: 800, y: 200,
                     }}
                     zoom={0.4}
                     nodeLabelComponent={{
                         render: <NodeLabel className="myLabelComponentInSvg" />,
-                        // foreignObjectWrapper: {
-                        //     y: 24
-                        // }
+                        foreignObjectWrapper: {
+                            y: 24,
+                        },
                     }}
                 />
 
