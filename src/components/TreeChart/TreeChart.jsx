@@ -19,27 +19,14 @@ class TreeChart extends Component {
         };
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         let { persons } = this.state;
-        // console.log(persons.length);
-        // (this.database.on('child_added', (snap) => {
-        //     persons.push({
-        //         id: snap.key,
-        //         firstName: snap.val().firstName,
-        //         lastName: snap.val().lastName,
-        //         gender: snap.val().gender,
-        //         birthDate: snap.val().birthDate,
-        //         deathDate: snap.val().deathDate,
-        //         parentId: snap.val().parentId,
-        //     });
-        //     console.log(persons.length);
 
-        Promise.all(persons.map((person) => {
+        const modifiedPersons = await Promise.all(persons.map((person) => {
             const num = person.id;
             if (typeof num !== 'number') {
                 return null;
             }
-            // console.log('it ok');
             return import(`../../assets/${person.id}.jpg`);
         }))
             .then((personsImages) => {
@@ -47,9 +34,12 @@ class TreeChart extends Component {
                     ...person,
                     imageUrl: personsImages[index],
                 }));
-                // console.log(persons);
+                return persons;
             });
-        // }));
+
+        this.setState({
+            persons: modifiedPersons,
+        });
     }
 
     createDataTree = (dataSet) => {
@@ -73,11 +63,9 @@ class TreeChart extends Component {
     sortByBirthDate = array => array.map(person => (
         {
             ...person,
-            // imageUrl: imgPath,
             name: person.id.toString(),
             birthYear: +person.birthDate.split('').slice(-4).join(''),
         })).sort((a, b) => a.birthYear - b.birthYear);
-
 
     addPersonCancelHandler = () => {
         this.setState({
