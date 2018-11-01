@@ -13,8 +13,20 @@ const navItems = () => (
             >tree
             </Link>
         </NavItem>
-        <NavItem componentClass="span">gallery</NavItem>
-        <NavItem componentClass="span">documents</NavItem>
+        <NavItem componentClass="span">
+            <Link to={{
+                pathname: '/gallery',
+            }}
+            >gallery
+            </Link>
+        </NavItem>
+        <NavItem componentClass="span">
+            <Link to={{
+                pathname: '/documents',
+            }}
+            >documents
+            </Link>
+        </NavItem>
     </div>
 
 );

@@ -4,7 +4,7 @@ import classes from './CardFooterOverlay.css';
 
 const cardFooterOverlay = ({ parent }) => (
     <div className={classes.CardFooterOverlay}>
-        {parent
+        {!parent
             ? <div className={classes.OverlayLink}>add parent</div> : null
         }
         <div className={classes.OverlayLink}>add child</div>

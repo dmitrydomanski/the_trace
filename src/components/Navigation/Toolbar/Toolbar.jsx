@@ -7,7 +7,8 @@ import NavItems from '../NavItems/NavItems';
 import Logo from '../Logo/Logo';
 
 class Toolbar extends Component {
-    handleClick = ({ history }) => {
+    handleClick = () => {
+        const { history } = this.props;
         history.push('/');
     }
 
@@ -30,6 +31,9 @@ class Toolbar extends Component {
 Toolbar.propTypes = {
     color: PropTypes.string.isRequired,
     showLogo: PropTypes.string.isRequired,
+    history: PropTypes.shape({
+        push: PropTypes.func.isRequired,
+    }).isRequired,
 };
 
 export default withRouter(Toolbar);

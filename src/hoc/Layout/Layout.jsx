@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import TreeChart from '../../components/TreeChart/TreeChart';
 import HomePage from '../../components/HomePage/HomePage';
+import DisclaimerPage from '../../components/UI/DisclaimerPage/DisclaimerPage';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import classes from './Layout.css';
 
@@ -23,6 +24,14 @@ const layout = ({ location }) => (
             <Route
                 path="/treechart"
                 component={TreeChart}
+            />
+            <Route
+                path="/gallery"
+                component={DisclaimerPage}
+            />
+            <Route
+                path="/gallery"
+                component={DisclaimerPage}
             />
         </Switch>
     </div>
