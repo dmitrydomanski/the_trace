@@ -8,10 +8,11 @@
     width: 20%;
     height: 100px;
     font-family: 'Special Elite', cursive;
+    cursor: pointer
     
 }
 
-.NavItem a {
+.NavItem a,div {
     color: ghostwhite;
     text-decoration: none;
     width: 100%;

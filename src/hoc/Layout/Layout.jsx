@@ -30,7 +30,7 @@ const layout = ({ location }) => (
                 component={DisclaimerPage}
             />
             <Route
-                path="/gallery"
+                path="/documents"
                 component={DisclaimerPage}
             />
         </Switch>

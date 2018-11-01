@@ -5,9 +5,18 @@
     background-size: cover;
     background-repeat:no-repeat;
     overflow: hidden;
+    position: absolute;
+    top: 120px;
 }
 
-h1 {
+.Disclaimer {
     top: 300px;
     left: 300px;
+    position: relative;
+    width: min-content;
+    text-align: right;
+    font-size: xx-large;
+    background-color: darkred;
+    border-radius: 10px;
+    padding: 10px;
 }
