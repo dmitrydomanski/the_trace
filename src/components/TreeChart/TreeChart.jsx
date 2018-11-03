@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Tree from 'react-d3-tree';
-import firebase from '../../Config/config';
-import 'firebase/database';
-import data from '../../data';
+// import axios from 'axios';
 import Modal from '../UI/Modal/Modal';
 import AddPersonForm from '../AddPerson/AddPersonForm';
 import NodeLabel from '../NodeLabel/NodeLabel';
@@ -10,36 +8,47 @@ import NodeLabel from '../NodeLabel/NodeLabel';
 class TreeChart extends Component {
     constructor(props) {
         super(props);
-        this.database = firebase.database().ref().child('persons');
 
         this.state = {
             // nodes: null,
-            persons: data,
+            error: null,
+            isLoaded: false,
+            persons: [],
             addingPerson: false,
         };
     }
 
     async componentDidMount() {
-        let { persons } = this.state;
+        fetch('api/getpersons')
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        isLoaded: true,
+                        persons: result.data,
+                    });
+                },
+            );
+        // let { persons } = this.state;
 
-        const modifiedPersons = await Promise.all(persons.map((person) => {
-            const num = person.id;
-            if (typeof num !== 'number') {
-                return null;
-            }
-            return import(`../../assets/${person.id}.jpg`);
-        }))
-            .then((personsImages) => {
-                persons = persons.map((person, index) => ({
-                    ...person,
-                    imageUrl: personsImages[index],
-                }));
-                return persons;
-            });
+        // const modifiedPersons = await Promise.all(persons.map((person) => {
+        //     const num = person.id;
+        //     if (typeof num !== 'number') {
+        //         return null;
+        //     }
+        //     return import(`../../assets/${person.id}.jpg`);
+        // }))
+        //     .then((personsImages) => {
+        //         persons = persons.map((person, index) => ({
+        //             ...person,
+        //             imageUrl: personsImages[index],
+        //         }));
+        //         return persons;
+        //     });
 
-        this.setState({
-            persons: modifiedPersons,
-        });
+        // this.setState({
+        //     persons: modifiedPersons,
+        // });
     }
 
     createDataTree = (dataSet) => {
@@ -73,20 +82,15 @@ class TreeChart extends Component {
         });
     }
 
-    addPerson = () => {
-        this.database.push().set({
-            firstName: 'Dmitry',
-            lastName: 'Domanski',
-            gender: 'male',
-            birthDate: '06/10/1982',
-            deathDate: null,
-            parentId: null,
-        });
-    }
-
     render() {
-        const { persons, addingPerson } = this.state;
+        const { persons, addingPerson, error, isLoaded } = this.state;
         const treeData = this.createDataTree(this.sortByBirthDate(persons));
+        if (error) {
+            return <div> Error: {error.message}</div>;
+        }
+        if (!isLoaded) {
+            return <div>Loading...</div>;
+        }
         return (
             <div
                 id="treeWrapper"
@@ -121,5 +125,4 @@ class TreeChart extends Component {
         );
     }
 }
-
 export default TreeChart;
