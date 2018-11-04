@@ -19,7 +19,7 @@ class TreeChart extends Component {
     }
 
     async componentDidMount() {
-        fetch('api/getpersons')
+        fetch('http://localhost:3001/api/getpersons')
             .then(res => res.json())
             .then(
                 (result) => {
@@ -29,52 +29,7 @@ class TreeChart extends Component {
                     });
                 },
             );
-        // let { persons } = this.state;
-
-        // const modifiedPersons = await Promise.all(persons.map((person) => {
-        //     const num = person.id;
-        //     if (typeof num !== 'number') {
-        //         return null;
-        //     }
-        //     return import(`../../assets/${person.id}.jpg`);
-        // }))
-        //     .then((personsImages) => {
-        //         persons = persons.map((person, index) => ({
-        //             ...person,
-        //             imageUrl: personsImages[index],
-        //         }));
-        //         return persons;
-        //     });
-
-        // this.setState({
-        //     persons: modifiedPersons,
-        // });
     }
-
-    createDataTree = (dataSet) => {
-        const hashTable = Object.create(null);
-        dataSet.forEach((aData) => {
-            hashTable[aData.id] = {
-                ...aData, children: [],
-            };
-        });
-        const DataTree = [];
-        dataSet.forEach((aData) => {
-            if (aData.parentId) {
-                hashTable[aData.parentId].children.push(hashTable[aData.id]);
-            } else {
-                DataTree.push(hashTable[aData.id]);
-            }
-        });
-        return DataTree;
-    }
-
-    sortByBirthDate = array => array.map(person => (
-        {
-            ...person,
-            name: person.id.toString(),
-            birthYear: +person.birthDate.split('').slice(-4).join(''),
-        })).sort((a, b) => a.birthYear - b.birthYear);
 
     addPersonCancelHandler = () => {
         this.setState({
@@ -84,7 +39,6 @@ class TreeChart extends Component {
 
     render() {
         const { persons, addingPerson, error, isLoaded } = this.state;
-        const treeData = this.createDataTree(this.sortByBirthDate(persons));
         if (error) {
             return <div> Error: {error.message}</div>;
         }
@@ -102,7 +56,7 @@ class TreeChart extends Component {
                     <AddPersonForm />
                 </Modal>
                 <Tree
-                    data={treeData}
+                    data={persons}
                     nodeSize={{
                         x: 330, y: 450,
                     }}
