@@ -29,7 +29,7 @@ class TreeChart extends Component {
                             isLoaded: true,
                             persons: result.data,
                         });
-                    }, 500);
+                    }, 1500);
                 },
             );
     }
