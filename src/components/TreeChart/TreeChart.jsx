@@ -4,6 +4,7 @@ import Tree from 'react-d3-tree';
 import Modal from '../UI/Modal/Modal';
 import AddPersonForm from '../AddPerson/AddPersonForm';
 import NodeLabel from '../NodeLabel/NodeLabel';
+import Loader from '../UI/Loader/Loader';
 
 class TreeChart extends Component {
     constructor(props) {
@@ -18,15 +19,17 @@ class TreeChart extends Component {
         };
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         fetch('http://localhost:3001/api/getpersons')
             .then(res => res.json())
             .then(
                 (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        persons: result.data,
-                    });
+                    setTimeout(() => {
+                        this.setState({
+                            isLoaded: true,
+                            persons: result.data,
+                        });
+                    }, 500);
                 },
             );
     }
@@ -43,7 +46,11 @@ class TreeChart extends Component {
             return <div> Error: {error.message}</div>;
         }
         if (!isLoaded) {
-            return <div>Loading...</div>;
+            return (
+                <Modal show={!isLoaded}>
+                    <Loader />
+                </Modal>
+            );
         }
         return (
             <div
