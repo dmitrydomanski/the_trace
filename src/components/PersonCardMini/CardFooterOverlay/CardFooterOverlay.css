@@ -1,9 +1,10 @@
 .CardFooterOverlay {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
-    background-color: grey;
+    background-image: url('../../../assets/overlay.jpg');
+    background-size: cover;
     z-index: 1;
     color: black;
     padding: 5px 0 5px 0;
@@ -13,4 +14,10 @@
 
 .OverlayLink{
     margin-left: 10px;
+    transition: font-size 0.3s ease-in-out
+}
+
+.OverlayLink:hover{
+    /* color: white; */
+    font-size: 1.5em;
 }

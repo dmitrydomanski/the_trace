@@ -1,28 +1,63 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import classes from './PersonCardMini.css';
 import PersonPortrait from './PersonPortrait/PersonPortrait';
 import CardMiniFooter from './CardMiniFooter/CardMiniFooter';
+import CardFooterOverlay from './CardFooterOverlay/CardFooterOverlay';
 
-const personCardMini = ({ url, parent, firstName, lastName, birthDate, deathDate, maidenName }) => (
-    <div className={classes.PersonCardMini}>
-        <PersonPortrait url={url} />
+export default class PersonCardMini extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            overlay: false,
+        };
+    }
 
-        <CardMiniFooter
-            parent={parent}
-            firstName={firstName}
-            lastName={lastName}
-            birthDate={birthDate}
-            deathDate={deathDate}
-            maidenName={maidenName}
-        />
+    mouseEnteredHandler = () => {
+        this.setState({
+            overlay: true,
+        });
+    }
 
+    mouseLeavedHandler = () => {
+        this.setState({
+            overlay: false,
+        });
+    }
 
-    </div>
-);
+    render() {
+        const { overlay } = this.state;
+        const { url, parent, firstName, lastName, birthDate, deathDate, maidenName } = this.props;
+        return (
+            <div className={classes.PersonCardMini}>
+                <PersonPortrait url={url} />
 
-personCardMini.propTypes = {
+                <div
+                    onMouseEnter={this.mouseEnteredHandler}
+                    onMouseLeave={this.mouseLeavedHandler}
+                >
+                    {
+                        overlay
+                            ? <CardFooterOverlay parent={parent} />
+                            : (
+                                <CardMiniFooter
+                                    parent={parent}
+                                    firstName={firstName}
+                                    lastName={lastName}
+                                    birthDate={birthDate}
+                                    deathDate={deathDate}
+                                    maidenName={maidenName}
+                                />
+                            )
+                    }
+                </div>
+            </div>
+        );
+    }
+}
+
+PersonCardMini.propTypes = {
     url: PropTypes.string,
     parent: PropTypes.string,
     firstName: PropTypes.string.isRequired,
@@ -32,11 +67,9 @@ personCardMini.propTypes = {
     deathDate: PropTypes.string,
 };
 
-personCardMini.defaultProps = {
+PersonCardMini.defaultProps = {
     url: '',
     maidenName: '',
     deathDate: null,
     parent: null,
 };
-
-export default personCardMini;
