@@ -3,18 +3,22 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './CardFooterOverlay.css';
 
-const cardFooterOverlay = ({ parent }) => (
+const cardFooterOverlay = ({ parent, triggerAddPerson }) => (
     <div className={classes.CardFooterOverlay}>
         {!parent
             ? (
-                <div className={classes.OverlayLink}>
+                <button
+                    className={classes.OverlayLink}
+                    onClick={triggerAddPerson}
+                    type="button"
+                >
                     <FontAwesomeIcon
                         icon="portrait"
                         color="whitesmoke"
                         size="3x"
                         title="Add Parent"
                     />
-                </div>
+                </button>
             )
             : null
         }
@@ -30,8 +34,10 @@ const cardFooterOverlay = ({ parent }) => (
 );
 cardFooterOverlay.propTypes = {
     parent: PropTypes.string,
+    triggerAddPerson: PropTypes.func,
 };
 cardFooterOverlay.defaultProps = {
     parent: null,
+    triggerAddPerson: null,
 };
 export default cardFooterOverlay;

@@ -7,12 +7,6 @@ import PersonCardMini from '../PersonCardMini/PersonCardMini';
 class NodeLabel extends PureComponent {
     render() {
         const { className, nodeData } = this.props;
-        // let person = new Person();
-        // person = {
-        //     ...nodeData,
-        // };
-        // const person = Object.create(Person, nodeData);
-        // console.log(nodeData.imageUrl);
         return (
             <div className={className}>
                 <PersonCardMini

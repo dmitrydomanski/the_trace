@@ -26,6 +26,8 @@ export default class PersonCardMini extends Component {
         });
     }
 
+    addPersonHandler = () => alert('click');
+
     render() {
         const { overlay } = this.state;
         const { url, parent, firstName, lastName, birthDate, deathDate, maidenName } = this.props;
@@ -39,7 +41,12 @@ export default class PersonCardMini extends Component {
                 >
                     {
                         overlay
-                            ? <CardFooterOverlay parent={parent} />
+                            ? (
+                                <CardFooterOverlay
+                                    parent={parent}
+                                    triggerAddPerson={this.addPersonHandler}
+                                />
+                            )
                             : (
                                 <CardMiniFooter
                                     parent={parent}
