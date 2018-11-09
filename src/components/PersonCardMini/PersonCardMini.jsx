@@ -26,7 +26,7 @@ export default class PersonCardMini extends Component {
         });
     }
 
-    addPersonHandler = () => alert('click');
+    addPersonHandler = () => {};
 
     render() {
         const { overlay } = this.state;

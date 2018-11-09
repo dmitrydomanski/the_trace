@@ -3,16 +3,14 @@ import PropTypes from 'prop-types';
 import classes from './CardFooterOverlay.css';
 import IconButton from '../../UI/IconButton/IconButton';
 
-const handleClick = () => {
-    alert('click');
-};
+const handleClick = parent => parent;
 
 const cardFooterOverlay = ({ parent }) => (
     <div className={classes.CardFooterOverlay}>
         {!parent
             ? (
                 <IconButton
-                    onClick={handleClick}
+                    onClick={() => handleClick(parent)}
                     icon="portrait"
                     color="whitesmoke"
                     size="3x"
@@ -23,7 +21,7 @@ const cardFooterOverlay = ({ parent }) => (
         }
         <div className={classes.OverlayLink}>
             <IconButton
-                onClick={handleClick}
+                onClick={() => handleClick(parent)}
                 icon="child"
                 color="whitesmoke"
                 size="3x"
