@@ -11,23 +11,3 @@
     height: auto;
     min-height: 90px;
 }
-
-.OverlayLink{
-    margin-left: 10px;
-    transition: font-size 0.3s ease-in-out
-}
-
-.OverlayLink:hover{
-    /* color: white; */
-    font-size: 1.5em;
-}
-
-button, input[type="submit"], input[type="reset"] {
-	background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-}
