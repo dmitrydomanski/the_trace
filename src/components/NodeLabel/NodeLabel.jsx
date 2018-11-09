@@ -6,10 +6,11 @@ import PersonCardMini from '../PersonCardMini/PersonCardMini';
 
 class NodeLabel extends PureComponent {
     render() {
-        const { className, nodeData } = this.props;
+        const { className, nodeData, addPersonTrigger } = this.props;
         return (
             <div className={className}>
                 <PersonCardMini
+                    addPersonTrigger={addPersonTrigger}
                     url={nodeData.imageUrl}
                     parent={nodeData.parentId}
                     firstName={nodeData.firstName}
@@ -26,6 +27,7 @@ class NodeLabel extends PureComponent {
 
 NodeLabel.propTypes = {
     className: PropTypes.string.isRequired,
+    addPersonTrigger: PropTypes.func,
     nodeData: PropTypes.shape({
         url: PropTypes.number,
         parent: PropTypes.object,
@@ -41,6 +43,7 @@ NodeLabel.propTypes = {
 
 NodeLabel.defaultProps = {
     nodeData: null,
+    addPersonTrigger: null,
 };
 
 export default NodeLabel;

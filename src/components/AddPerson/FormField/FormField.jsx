@@ -1,13 +1,13 @@
 import React from 'react';
-// import classes from './FormField.css';
 import PropTypes from 'prop-types';
+import classes from './FormField.css';
 
 const formField = ({ label, name, type, inputChanged }) => (
-    <React.Fragment>
+    <div className={classes.FormField}>
         <label htmlFor={name}> {label}
             <input name={name} type={type} onChange={inputChanged} />
         </label>
-    </React.Fragment>
+    </div>
 );
 
 formField.propTypes = {

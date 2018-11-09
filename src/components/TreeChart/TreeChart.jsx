@@ -40,6 +40,13 @@ class TreeChart extends Component {
         });
     }
 
+    addPersonHandler = (parent) => {
+        this.setState({
+            addingPerson: true,
+        });
+        console.log(parent);
+    }
+
     render() {
         const { persons, addingPerson, error, isLoaded } = this.state;
         if (error) {
@@ -75,7 +82,10 @@ class TreeChart extends Component {
                     }}
                     zoom={0.4}
                     nodeLabelComponent={{
-                        render: <NodeLabel className="myLabelComponentInSvg" />,
+                        render: <NodeLabel
+                            className="nodeLabel"
+                            addPersonTrigger={this.addPersonHandler}
+                        />,
                         foreignObjectWrapper: {
                             y: 24,
                         },

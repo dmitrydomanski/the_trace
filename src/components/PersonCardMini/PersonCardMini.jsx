@@ -26,11 +26,13 @@ export default class PersonCardMini extends Component {
         });
     }
 
-    addPersonHandler = () => {};
-
     render() {
         const { overlay } = this.state;
-        const { url, parent, firstName, lastName, birthDate, deathDate, maidenName } = this.props;
+        const {
+            url, parent, firstName, lastName,
+            birthDate, deathDate, maidenName,
+            addPersonTrigger,
+        } = this.props;
         return (
             <div className={classes.PersonCardMini}>
                 <PersonPortrait url={url} />
@@ -44,7 +46,7 @@ export default class PersonCardMini extends Component {
                             ? (
                                 <CardFooterOverlay
                                     parent={parent}
-                                    triggerAddPerson={this.addPersonHandler}
+                                    addPersonTrigger={addPersonTrigger}
                                 />
                             )
                             : (
@@ -72,6 +74,7 @@ PersonCardMini.propTypes = {
     maidenName: PropTypes.string,
     birthDate: PropTypes.string.isRequired,
     deathDate: PropTypes.string,
+    addPersonTrigger: PropTypes.func,
 };
 
 PersonCardMini.defaultProps = {
@@ -79,4 +82,5 @@ PersonCardMini.defaultProps = {
     maidenName: '',
     deathDate: null,
     parent: null,
+    addPersonTrigger: null,
 };

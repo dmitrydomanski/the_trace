@@ -1,5 +1,15 @@
 .Form {
-    /* width: 100%;
-    background-color: indigo; */
+    border: solid 1px burlywood;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: blanchedalmond;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.FormTitle {
+    text-align: center;
+    border-bottom: solid 1px crimson;
+    padding: 0 0 5px 0;
+    margin-bottom: 5px;
 }
 

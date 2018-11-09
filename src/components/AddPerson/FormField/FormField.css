@@ -1,3 +1,8 @@
 input {
     margin: 5px 5px 5px 5px;
 }
+
+.FormField{
+    display: flex;
+    justify-content: flex-end;
+}

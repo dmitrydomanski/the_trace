@@ -26,6 +26,7 @@ export default class AddPersonForm extends Component {
     render() {
         return (
             <form className={classes.Form}>
+                <div className={classes.FormTitle}>Add person</div>
                 <FormField label="Name" name="firstName" type="string" inputChanged={this.formChangeHandler} />
                 <FormField label="Last Name" name="lastName" type="string" inputChanged={this.formChangeHandler} />
                 <FormField label="Birth date" name="birthDate" type="string" inputChanged={this.formChangeHandler} />
