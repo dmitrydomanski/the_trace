@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './AddPersonForm.css';
 import FormField from './FormField/FormField';
 
 export default class AddPersonForm extends Component {
+    closeStyle = {
+        position: 'absolute',
+        left: '65%',
+        color: 'crimson',
+        cursor: 'pointer',
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -24,8 +33,15 @@ export default class AddPersonForm extends Component {
     }
 
     render() {
+        const { formClosed } = this.props;
         return (
             <form className={classes.Form}>
+                <FontAwesomeIcon
+                    icon="times-circle"
+                    title="Cancel add person"
+                    style={this.closeStyle}
+                    onClick={formClosed}
+                />
                 <div className={classes.FormTitle}>Add person</div>
                 <FormField label="Name" name="firstName" type="string" inputChanged={this.formChangeHandler} />
                 <FormField label="Last Name" name="lastName" type="string" inputChanged={this.formChangeHandler} />
@@ -38,8 +54,14 @@ export default class AddPersonForm extends Component {
                 <FormField label="Maiden name" name="maidenName" type="string" inputChanged={this.formChangeHandler} />
 
             </form>
-
-
         );
     }
 }
+
+AddPersonForm.propTypes = {
+    formClosed: PropTypes.func,
+};
+
+AddPersonForm.defaultProps = {
+    formClosed: null,
+};

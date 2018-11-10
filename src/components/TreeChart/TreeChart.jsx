@@ -40,11 +40,11 @@ class TreeChart extends Component {
         });
     }
 
-    addPersonHandler = (parent) => {
+    addPersonHandler = (person, type) => {
         this.setState({
             addingPerson: true,
         });
-        console.log(parent);
+        console.log(person, type);
     }
 
     render() {
@@ -67,7 +67,7 @@ class TreeChart extends Component {
                 }}
             >
                 <Modal show={addingPerson} modalClosed={this.addPersonCancelHandler}>
-                    <AddPersonForm />
+                    <AddPersonForm formClosed={this.addPersonCancelHandler} />
                 </Modal>
                 <Tree
                     data={persons}

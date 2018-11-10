@@ -28,14 +28,10 @@ export default class PersonCardMini extends Component {
 
     render() {
         const { overlay } = this.state;
-        const {
-            url, parent, firstName, lastName,
-            birthDate, deathDate, maidenName,
-            addPersonTrigger,
-        } = this.props;
+        const { person, addPersonTrigger } = this.props;
         return (
             <div className={classes.PersonCardMini}>
-                <PersonPortrait url={url} />
+                <PersonPortrait url={person.url} />
 
                 <div
                     onMouseEnter={this.mouseEnteredHandler}
@@ -45,18 +41,18 @@ export default class PersonCardMini extends Component {
                         overlay
                             ? (
                                 <CardFooterOverlay
-                                    parent={parent}
+                                    person={person}
                                     addPersonTrigger={addPersonTrigger}
                                 />
                             )
                             : (
                                 <CardMiniFooter
-                                    parent={parent}
-                                    firstName={firstName}
-                                    lastName={lastName}
-                                    birthDate={birthDate}
-                                    deathDate={deathDate}
-                                    maidenName={maidenName}
+                                    parent={person.parent}
+                                    firstName={person.firstName}
+                                    lastName={person.lastName}
+                                    birthDate={person.birthDate}
+                                    deathDate={person.deathDate}
+                                    maidenName={person.maidenName}
                                 />
                             )
                     }
@@ -67,20 +63,19 @@ export default class PersonCardMini extends Component {
 }
 
 PersonCardMini.propTypes = {
-    url: PropTypes.string,
-    parent: PropTypes.string,
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-    maidenName: PropTypes.string,
-    birthDate: PropTypes.string.isRequired,
-    deathDate: PropTypes.string,
+    person: PropTypes.shape({
+        url: PropTypes.number,
+        parent: PropTypes.object,
+        firstName: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
+        maidenName: PropTypes.string,
+        birthDate: PropTypes.string.isRequired,
+        deathDate: PropTypes.string,
+    }),
     addPersonTrigger: PropTypes.func,
 };
 
 PersonCardMini.defaultProps = {
-    url: '',
-    maidenName: '',
-    deathDate: null,
-    parent: null,
+    person: null,
     addPersonTrigger: null,
 };

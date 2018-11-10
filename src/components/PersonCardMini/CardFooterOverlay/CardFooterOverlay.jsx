@@ -4,14 +4,14 @@ import classes from './CardFooterOverlay.css';
 import IconButton from '../../UI/IconButton/IconButton';
 
 
-const cardFooterOverlay = ({ parent, addPersonTrigger }) => {
-    const handleClick = parentID => () => addPersonTrigger(parentID);
+const cardFooterOverlay = ({ person, addPersonTrigger }) => {
+    const handleClick = (personNode, type) => () => addPersonTrigger(personNode, type);
     return (
         <div className={classes.CardFooterOverlay}>
-            {!parent
+            {!person.parent
                 ? (
                     <IconButton
-                        onClick={handleClick(parent)}
+                        onClick={handleClick(person, 'parent')}
                         icon="portrait"
                         color="whitesmoke"
                         size="3x"
@@ -22,7 +22,7 @@ const cardFooterOverlay = ({ parent, addPersonTrigger }) => {
             }
             <div className={classes.OverlayLink}>
                 <IconButton
-                    onClick={handleClick(parent)}
+                    onClick={handleClick(person, 'child')}
                     icon="child"
                     color="whitesmoke"
                     size="3x"
@@ -34,11 +34,19 @@ const cardFooterOverlay = ({ parent, addPersonTrigger }) => {
 };
 
 cardFooterOverlay.propTypes = {
-    parent: PropTypes.string,
+    person: PropTypes.shape({
+        url: PropTypes.number,
+        parent: PropTypes.object,
+        firstName: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
+        maidenName: PropTypes.string,
+        birthDate: PropTypes.string.isRequired,
+        deathDate: PropTypes.string,
+    }),
     addPersonTrigger: PropTypes.func,
 };
 cardFooterOverlay.defaultProps = {
-    parent: null,
+    person: null,
     addPersonTrigger: null,
 };
 

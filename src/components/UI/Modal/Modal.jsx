@@ -6,9 +6,7 @@ import Aux from '../../../hoc/Aux/Aux';
 import Backdrop from '../Backdrop/Backdrop';
 
 export default class Modal extends Component {
-    shouldComponentUpdate(nextProps, nextState) {
-        // eslint-disable-next-line
-        console.log(nextState);
+    shouldComponentUpdate(nextProps) {
         const { show } = this.props;
         return nextProps.show !== show;
     }

@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import PersonCardMini from '../PersonCardMini/PersonCardMini';
-// import Person from '../../models/Person';
 
 class NodeLabel extends PureComponent {
     render() {
@@ -10,14 +9,8 @@ class NodeLabel extends PureComponent {
         return (
             <div className={className}>
                 <PersonCardMini
+                    person={nodeData}
                     addPersonTrigger={addPersonTrigger}
-                    url={nodeData.imageUrl}
-                    parent={nodeData.parentId}
-                    firstName={nodeData.firstName}
-                    lastName={nodeData.lastName}
-                    birthDate={nodeData.birthDate}
-                    deathDate={nodeData.deathDate}
-                    maidenName={nodeData.maidenName}
                     key={nodeData.id}
                 />
             </div>
@@ -38,7 +31,6 @@ NodeLabel.propTypes = {
         deathDate: PropTypes.string,
 
     }),
-    // nodeData: PropTypes.object,
 };
 
 NodeLabel.defaultProps = {

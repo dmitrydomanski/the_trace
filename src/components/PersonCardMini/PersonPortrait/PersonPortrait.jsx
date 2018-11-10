@@ -2,11 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classes from './PersonPortrait.css';
-// import portrait from '../../../assets/8.jpg';
 
 const personPortrait = ({ url, children }) => (
-    // const imageUrl = import(`../../../assets/${url}.jpg`);
-    // return (
     <div
         className={classes.PersonPortrait}
         style={{
@@ -14,15 +11,15 @@ const personPortrait = ({ url, children }) => (
         }}
     >{children}
     </div>
-    // );
 );
 
 personPortrait.propTypes = {
-    url: PropTypes.string.isRequired,
+    url: PropTypes.string,
     children: PropTypes.node,
 };
 
 personPortrait.defaultProps = {
+    url: '',
     children: null,
 };
 
